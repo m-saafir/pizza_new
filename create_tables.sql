@@ -153,6 +153,15 @@ CREATE TABLE IF NOT EXISTS p_order_details(
   FOREIGN KEY (topping_id) REFERENCES p_toppings(topping_id)
 );
 
+INSERT INTO p_pizza_sizes
+  (size_id, size_desc, active_sw)
+  VALUES
+  (1, 'Small', 'Y'),
+  (2, 'Medium', 'Y'),
+  (3, 'Large', 'Y'),
+  (4, 'Jumbo', 'N'),
+  (5, 'Personal', 'N');
+
 INSERT INTO p_topping_categories
   (topping_category_desc)
   VALUES
@@ -173,5 +182,23 @@ INSERT INTO p_toppings
   (3, 'Mushrooms', 0.25),
   (3, 'Olives', 0.25),
   (3, 'Spinach', 0.25),
-  (3, 'Tomatoes', 0.25),
+  (4, 'Tomatoes', 0.25),
   (4, 'Pineapple', 0.50);
+
+INSERT INTO p_credit_card_types
+  (credit_card_type_cd, credit_card_type_cd_desc)
+  VALUES
+  ('VSA', 'VISA'),
+  ('MC', 'MasterCard'),
+  ('AMEX', 'American Express');
+
+INSERT INTO p_order_types
+  (order_type_cd, order_type_cd_desc)
+  VALUES
+  (1, 'Delivery'),
+  (2, 'Pickup');
+
+INSERT INTO p_discount_codes
+  (discount_cd, discount_cd_desc, amount)
+  VALUES
+  ('TENTHOFF', '10 percent off any purchase over $20', 0.10);
