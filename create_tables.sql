@@ -152,3 +152,11 @@ CREATE TABLE IF NOT EXISTS p_order_details(
   FOREIGN KEY (size_id) REFERENCES p_pizza_sizes(size_id),
   FOREIGN KEY (topping_id) REFERENCES p_toppings(topping_id)
 );
+
+INSERT INTO p_topping_categories
+  (topping_category_desc) 
+  VALUES
+  ('Cheeses'),
+  ('Meats'),
+  ('Vegetables'),
+  ('Fruits');
