@@ -74,7 +74,8 @@ CREATE TABLE IF NOT EXISTS p_addresses(
 CREATE TABLE IF NOT EXISTS p_credit_card_types(
   credit_card_type_cd varchar(32) NOT NULL,
   credit_card_type_cd_desc varchar(255) NOT NULL,
-  active_sw enum('Y', 'N') NOT NULL DEFAULT 'Y'
+  active_sw enum('Y', 'N') NOT NULL DEFAULT 'Y',
+  PRIMARY KEY (credit_card_type_cd)
 );
 
 CREATE TABLE IF NOT EXISTS p_payment_profiles(
