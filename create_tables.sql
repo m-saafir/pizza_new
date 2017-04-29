@@ -201,4 +201,5 @@ INSERT INTO p_order_types
 INSERT INTO p_discount_codes
   (discount_cd, discount_cd_desc, amount)
   VALUES
-  ('TENTHOFF', '10 percent off any purchase over $20', 0.10);
+  ('TENTHOFF', '10 percent off any purchase over $20', 0.10),
+  ('FOURTHOFF', '25 percent off any purchase over $50', 0.25);
