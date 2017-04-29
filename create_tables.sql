@@ -157,7 +157,21 @@ INSERT INTO p_topping_categories
   (topping_category_desc)
   VALUES
   ('Cheeses'),
-  ('Sauces'),
   ('Meats'),
   ('Vegetables'),
   ('Fruits');
+
+INSERT INTO p_toppings
+  (topping_category_id, topping_desc, topping_price)
+  VALUES
+  (1, 'Regular Cheese', 0.00),
+  (1, 'Extra Cheese', 0.50),
+  (2, 'Chicken Breast', 0.75),
+  (2, 'Beef', 0.75),
+  (3, 'Bell Peppers', 0.25),
+  (3, 'Onions', 0.25),
+  (3, 'Mushrooms', 0.25),
+  (3, 'Olives', 0.25),
+  (3, 'Spinach', 0.25),
+  (3, 'Tomatoes', 0.25),
+  (4, 'Pineapple', 0.50);
