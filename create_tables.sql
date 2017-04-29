@@ -154,9 +154,10 @@ CREATE TABLE IF NOT EXISTS p_order_details(
 );
 
 INSERT INTO p_topping_categories
-  (topping_category_desc) 
+  (topping_category_desc)
   VALUES
   ('Cheeses'),
+  ('Sauces'),
   ('Meats'),
   ('Vegetables'),
   ('Fruits');
