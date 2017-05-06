@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
   </head>
   <body>
-    <div class="container-fluid">
+    <div class="container container-fluid col-md-9">
       <h1>Design Your Pizza</h1>
       <form action="/review.php" method="POST">
         <div class="form-group">
@@ -57,7 +57,7 @@
         </div>
 
         <div class="form-group">
-          <button type="submit">Submit</button>
+          <button class="btn btn-primary btn-lg" type="submit">Submit</button>
         </div>
       </form>
     </div>
