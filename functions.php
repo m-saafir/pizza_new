@@ -1,7 +1,7 @@
 <?php
   require_once('connect.php');
 
-  function insert($sql, $connection) {
+  function gen_sql($sql, $connection) {
     if (!($result = $connection->query($sql))) {
       return $connection->error;
     }
@@ -11,7 +11,7 @@
   function select($table, $connection) {
     $sql = "select * from {$table}";
     if (!($result != $connection->query($sql))) {
-      return 0;
+      return $connection->error;
     }
     return $result;
   }
