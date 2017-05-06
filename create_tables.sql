@@ -5,6 +5,7 @@ USE pizza_new;
 CREATE TABLE IF NOT EXISTS p_pizza_sizes(
   size_id int(11) NOT NULL,
   size_desc varchar(255) NOT NULL,
+  price decimal(8,2) NOT NULL DEFAULT 0.00,
   active_sw enum('Y', 'N') NOT NULL DEFAULT 'Y',
   PRIMARY KEY (size_id)
 );
@@ -12,7 +13,7 @@ CREATE TABLE IF NOT EXISTS p_pizza_sizes(
 CREATE TABLE IF NOT EXISTS p_pizza(
   pizza_id int(11) NOT NULL AUTO_INCREMENT,
   pizza_desc varchar(255) NOT NULL,
-  price decimal (8,2) NOT NULL DEFAULT 0.00,
+  price decimal(8,2) NOT NULL DEFAULT 0.00,
   active_sw enum('Y', 'N') NOT NULL DEFAULT 'Y',
   lastmod timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
   PRIMARY KEY (pizza_id)
@@ -154,13 +155,13 @@ CREATE TABLE IF NOT EXISTS p_order_details(
 );
 
 INSERT INTO p_pizza_sizes
-  (size_id, size_desc, active_sw)
+  (size_id, size_desc, price, active_sw)
   VALUES
-  (1, 'Small', 'Y'),
-  (2, 'Medium', 'Y'),
-  (3, 'Large', 'Y'),
-  (4, 'Jumbo', 'N'),
-  (5, 'Personal', 'N');
+  (1, 'Small', 5.00, 'Y'),
+  (2, 'Medium', 7.50, 'Y'),
+  (3, 'Large', 10.00, 'Y'),
+  (4, 'Jumbo', 12.50, 'N'),
+  (5, 'Personal', 3.00, 'N');
 
 INSERT INTO p_topping_categories
   (topping_category_desc)
