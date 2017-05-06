@@ -13,44 +13,62 @@
       <h1>Design Your Pizza</h1>
       <form action="review.php" method="POST">
         <div class="form-group">
-          <label for="order_type">Order Type</label>
+          <span>Order Type</span>
           <?php while ($row = $order_types->fetch_object()) { ?>
-            <input type="radio" name="order_type" value="<?php echo $row->order_type_cd; ?>"><?php echo $row->order_type_cd_desc; ?></input>
+            <label>
+              <input type="radio" name="order_type" value="<?php echo $row->order_type_cd; ?>">
+              <?php echo $row->order_type_cd_desc; ?>
+            </label>
           <?php } ?>
         </div>
 
         <div class="form-group">
-          <label for="size">Size</label>
+          <span>Size</span>
           <?php while ($row = $sizes->fetch_object()) { ?>
-            <input type="radio" name="size" value="<?php echo $row->size_id; ?>"><?php echo $row->size_desc.' $'.$row->price; ?></input>
+            <label>
+              <input type="radio" name="size" value="<?php echo $row->size_id; ?>">
+              <?php echo $row->size_desc.' $'.$row->price; ?>
+            </label>
           <?php } ?>
         </div>
 
         <div class="form-group">
-          <label for="cheese">Cheese</label>
+          <span>Cheese</span>
           <?php while ($row = $cheeses->fetch_object()) {?>
-            <input type="radio" name="cheese" value="<?php echo $row->topping_id; ?>"><?php echo $row->topping_desc.' $'.$row->topping_price; ?></input>
+            <label>
+              <input type="radio" name="cheese" value="<?php echo $row->topping_id; ?>">
+              <?php echo $row->topping_desc.' $'.$row->topping_price; ?>
+            </label>
           <?php } ?>
         </div>
 
         <div class="form-group">
-          <label for="meat">Meat</label>
+          <span>Meat</span>
           <?php while ($row = $meats->fetch_object()) {?>
-            <input type="checkbox" name="meat" value="<?php echo $row->topping_id; ?>"><?php echo $row->topping_desc.' $'.$row->topping_price; ?></input>
+            <label>
+              <input type="checkbox" name="meats[]" value="<?php echo $row->topping_id; ?>">
+              <?php echo $row->topping_desc.' $'.$row->topping_price; ?>
+            </label>
           <?php } ?>
         </div>
 
         <div class="form-group">
-          <label for="veggies">Vegetables</label>
+          <span>Vegetables</span>
           <?php while ($row = $veggies->fetch_object()) {?>
-            <input type="checkbox" name="veggies" value="<?php echo $row->topping_id; ?>"><?php echo $row->topping_desc.' $'.$row->topping_price; ?></input>
+            <label>
+              <input type="checkbox" name="veggies[]" value="<?php echo $row->topping_id; ?>">
+              <?php echo $row->topping_desc.' $'.$row->topping_price; ?>
+            </label>
           <?php } ?>
         </div>
 
         <div class="form-group">
-          <label for="fruit">Fruits</label>
+          <span>Fruits</span>
           <?php while ($row = $fruits->fetch_object()) {?>
-            <input type="checkbox" name="fruit" value="<?php echo $row->topping_id; ?>"><?php echo $row->topping_desc.' $'.$row->topping_price; ?></input>
+            <label>
+              <input type="checkbox" name="fruits[]" value="<?php echo $row->topping_id; ?>">
+              <?php echo $row->topping_desc.' $'.$row->topping_price; ?>
+            </label>
           <?php } ?>
         </div>
 
