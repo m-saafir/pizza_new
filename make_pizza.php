@@ -1,7 +1,5 @@
 <?php
-  require_once('connect.php');
-  require_once('functions.php');
-  require_once('variables.php');
+  require('requires.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -13,7 +11,7 @@
   <body>
     <div class="container container-fluid col-md-9">
       <h1>Design Your Pizza</h1>
-      <form action="/review.php" method="POST">
+      <form action="review.php" method="POST">
         <div class="form-group">
           <label for="order_type">Order Type</label>
           <?php while ($row = $order_types->fetch_object()) { ?>
@@ -36,7 +34,7 @@
         </div>
 
         <div class="form-group">
-          <label for="meat">Meat
+          <label for="meat">Meat</label>
           <?php while ($row = $meats->fetch_object()) {?>
             <input type="checkbox" name="meat" value="<?php echo $row->topping_id; ?>"><?php echo $row->topping_desc.' $'.$row->topping_price; ?></input>
           <?php } ?>
