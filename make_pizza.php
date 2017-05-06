@@ -22,7 +22,7 @@
         <div class="form-group">
           <label for="size">Size</label>
           <?php while ($row = $sizes->fetch_object()) { ?>
-            <input type="radio" name="size" value="<?php echo $row->size_id; ?>"><?php echo $row->size_desc; ?></input>
+            <input type="radio" name="size" value="<?php echo $row->size_id; ?>"><?php echo $row->size_desc.' $'.$row->price; ?></input>
           <?php } ?>
         </div>
 
