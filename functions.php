@@ -1,8 +1,18 @@
 <?php
-  include('connect.php');
-  function select_all($table, $connection) {
+  require_once('connect.php');
+
+  function insert($sql, $connection) {
+    if (!($result = $connection->query($sql))) {
+      return $connection->error;
+    }
+    return 1;
+  }
+
+  function select($table, $connection) {
     $sql = "select * from {$table}";
-    $result = $connection->query($sql);
+    if (!($result != $connection->query($sql))) {
+      return 0;
+    }
     return $result;
   }
 ?>
