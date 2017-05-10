@@ -64,7 +64,10 @@
           }
         ?>
       </ul>
-      <span>Total Price: $<?php echo number_format(array_sum($prices), 2); ?></span>
+      <p>Total Price: $<?php echo number_format(array_sum($prices), 2); ?></p>
+      <a href="make_pizza.php">
+        <button class="btn btn-success">Make Another Order</button>
+      </a>
     </div>
   </body>
 </html>
