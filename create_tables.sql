@@ -1,6 +1,6 @@
-DROP DATABASE IF EXISTS pizza_new;
-CREATE DATABASE pizza_new;
-USE pizza_new;
+DROP DATABASE IF EXISTS pizza;
+CREATE DATABASE pizza;
+USE pizza;
 
 CREATE TABLE IF NOT EXISTS p_pizza_sizes(
   size_id int(11) NOT NULL,
