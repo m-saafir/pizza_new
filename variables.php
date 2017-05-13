@@ -7,4 +7,5 @@
   $meats = select('p_toppings', $conn, "WHERE topping_category_id = 2 AND active_sw = 'Y'");
   $veggies = select('p_toppings', $conn, "WHERE topping_category_id = 3 AND active_sw = 'Y'");
   $fruits = select('p_toppings', $conn, "WHERE topping_category_id = 4 AND active_sw = 'Y'");
+  global $ERROR;
 ?>
