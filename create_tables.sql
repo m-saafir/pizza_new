@@ -154,6 +154,14 @@ CREATE TABLE IF NOT EXISTS p_order_details(
   FOREIGN KEY (topping_id) REFERENCES p_toppings(topping_id)
 );
 
+CREATE TABLE IF NOT EXISTS p_pizza_topping(
+  pizza_id int(11) NOT NULL,
+  topping_id int(11) NOT NULL,
+  PRIMARY KEY (pizza_id, topping_id),
+  FOREIGN KEY (pizza_id) REFERENCES p_pizza(pizza_id),
+  FOREIGN KEY (topping_id) REFERENCES p_toppings(topping_id)
+);
+
 INSERT INTO p_pizza_sizes
   (size_id, size_desc, price, active_sw)
   VALUES
