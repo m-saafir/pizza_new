@@ -68,9 +68,10 @@
               $prices[] = $row->topping_price;
             }
           }
+          $total_price = number_format(array_sum($prices), 2);
         ?>
       </ul>
-      <p>Total Price: $<?php echo number_format(array_sum($prices), 2); ?></p>
+      <p>Total Price: $<?php echo $total_price; ?></p>
       <a href="make_pizza.php">
         <button class="btn btn-success">Make Another Order</button>
       </a>
