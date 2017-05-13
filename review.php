@@ -8,6 +8,11 @@
   $fruits = isset($_REQUEST['fruits']) ? $_REQUEST['fruits'] : null;
   $prices = [];
 
+  // if (!($order_type_code && $size_id && $cheese_id)) {
+  //   header('make_pizza.php');
+  //   exit("Vital options were not chosen.");
+  // }
+
   $res = select('p_order_types', $conn, 'WHERE order_type_cd = '.$order_type_code);
   $row = $res->fetch_object();
   $order_type = $row->order_type_cd_desc;
