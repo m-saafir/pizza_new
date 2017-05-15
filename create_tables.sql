@@ -209,6 +209,12 @@ INSERT INTO p_order_types
   (1, 'Delivery'),
   (2, 'Pickup');
 
+INSERT INTO p_order_status_codes
+  (order_status_cd, order_status_cd_desc)
+  VALUES
+  (1, 'Pending'),
+  (2, 'Completed');
+
 INSERT INTO p_discount_codes
   (discount_cd, discount_cd_desc, amount)
   VALUES
