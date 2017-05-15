@@ -1,6 +1,6 @@
 <?php
   require_once('variables.php');
-  function gen_sql($sql, $connection) {
+  function gen_sql($sql, mysqli $connection) {
     if (!($result = $connection->query($sql))) {
       $GLOBALS['error'] = $connection->error;
       return 0;
@@ -8,7 +8,7 @@
     return 1;
   }
 
-  function select($table, $connection, $where = null) {
+  function select($table, mysqli $connection, $where = null) {
     $sql = "select * from {$table}";
     if (!empty($where)) {
       $sql = $sql." ".$where;
