@@ -2,7 +2,7 @@
   require_once('variables.php');
   function gen_sql($sql, $connection) {
     if (!($result = $connection->query($sql))) {
-      $ERROR = $connection->error;
+      $GLOBALS['error'] = $connection->error;
       return 0;
     }
     return 1;
@@ -14,8 +14,8 @@
       $sql = $sql." ".$where;
     }
     if (!($result = $connection->query($sql))) {
-      $ERROR = $connection->error;
-      return 0
+      $GLOBALS['error'] = $connection->error;
+      return 0;
     }
     return $result;
   }
