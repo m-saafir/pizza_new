@@ -1,6 +1,6 @@
 <?php
   require_once('variables.php');
-  function gen_sql($sql, mysqli $connection) {
+  function gen_sql(string $sql, mysqli $connection) {
     if (!($result = $connection->query($sql))) {
       $GLOBALS['error'] = $connection->error;
       return 0;
@@ -8,7 +8,7 @@
     return 1;
   }
 
-  function select($table, mysqli $connection, $where = null) {
+  function select(string $table, mysqli $connection, string $where = null) {
     $sql = "select * from {$table}";
     if (!empty($where)) {
       $sql = $sql." ".$where;
@@ -20,7 +20,7 @@
     return $result;
   }
 
-  function save_pizza($price, $size_id, $order_type_cd, array $topping_ids, mysqli $connection) {
+  function save_pizza(float $price, int $size_id, int $order_type_cd, array $topping_ids, mysqli $connection) {
     $pizza_sql = "INSERT INTO p_pizza (price) VALUES ($price)";
     gen_sql($pizza_sql, $connection);
     $pizza_id = $connection->insert_id;
