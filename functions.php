@@ -29,7 +29,7 @@
     // gen_sql($customer_sql, $connection);
     // $customer_id = $connection->insert_id;
 
-    $orders_sql = "INSERT INTO p_orders (order_date, order_type_cd, order_status_cd) VALUES ('2017-05-15', $order_type_cd, 1)";
+    $orders_sql = "INSERT INTO p_orders (order_date, order_type_cd, order_status_cd) VALUES (CURRENT_DATE, $order_type_cd, 1)";
     gen_sql($orders_sql, $connection);
     $order_id = $connection->insert_id;
 
