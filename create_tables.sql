@@ -153,15 +153,12 @@ CREATE TABLE IF NOT EXISTS p_order_details(
   size_id int(11) NOT NULL,
   pizza_topping_id int(11) NOT NULL,
   pizza_price decimal(8,2) NOT NULL DEFAULT 0.00,
-  -- topping_id int(11) NOT NULL,
-  -- topping_price decimal(8,2) NOT NULL DEFAULT 0.00,
   lastmod timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
   PRIMARY KEY (order_detail_id),
   FOREIGN KEY (order_id) REFERENCES p_orders(order_id),
   FOREIGN KEY (pizza_id) REFERENCES p_pizza(pizza_id),
   FOREIGN KEY (size_id) REFERENCES p_pizza_sizes(size_id),
   FOREIGN KEY (pizza_topping_id) REFERENCES p_pizza_topping(pizza_id)
-  -- FOREIGN KEY (topping_id) REFERENCES p_toppings(topping_id)
 );
 
 INSERT INTO p_pizza_sizes
