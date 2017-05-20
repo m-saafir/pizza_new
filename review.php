@@ -7,6 +7,8 @@
   $veggies = isset($_REQUEST['veggies']) ? $_REQUEST['veggies'] : null;
   $fruits = isset($_REQUEST['fruits']) ? $_REQUEST['fruits'] : null;
   $prices = [];
+  $toppings = [];
+  $toppings[] = $cheese_id;
 
   // if (!($order_type_code && $size_id && $cheese_id)) {
   //   header('make_pizza.php');
@@ -51,6 +53,7 @@
               echo '<li>'.$row->topping_desc.' $'.$row->topping_price.'</li>';
               $prices[] = $row->topping_price;
             }
+            $toppings[] = $meat;
           }
 
           foreach ($veggies as $veggie) {
@@ -59,6 +62,7 @@
               echo '<li>'.$row->topping_desc.' $'.$row->topping_price.'</li>';
               $prices[] = $row->topping_price;
             }
+            $toppings[] = $veggie;
           }
 
           foreach ($fruits as $fruit) {
@@ -67,11 +71,17 @@
               echo '<li>'.$row->topping_desc.' $'.$row->topping_price.'</li>';
               $prices[] = $row->topping_price;
             }
+            $toppings[] = $fruit;
           }
           $total_price = number_format(array_sum($prices), 2);
         ?>
       </ul>
       <p>Total Price: $<?php echo $total_price; ?></p>
+
+      <?php
+        save_pizza($total_price, $size_id, $order_type_code, $toppings, $conn);
+      ?>
+
       <a href="make_pizza.php">
         <button class="btn btn-success">Make Another Order</button>
       </a>
