@@ -1,4 +1,4 @@
-<? require('requires.php'); ?>
+<?php require('requires.php'); ?>
 <!DOCTYPE html>
 <html>
   <head>
