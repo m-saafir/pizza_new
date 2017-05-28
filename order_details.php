@@ -46,6 +46,8 @@ SQL;
 ROW;
             $pizza_id = $row->pizza_id;
           }
+        } else {
+          echo $GLOBALS['error'];
         }
       ?>
     </table>
@@ -81,6 +83,8 @@ SQL;
                 </tr>
 ROW;
             }
+          } else {
+            echo $GLOBALS['error'];
           }
          ?>
       </table>
