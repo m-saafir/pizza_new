@@ -5,7 +5,7 @@
       $GLOBALS['error'] = $connection->error;
       return 0;
     }
-    return 1;
+    return $result;
   }
 
   function select(string $table, mysqli $connection, string $where = null) {
