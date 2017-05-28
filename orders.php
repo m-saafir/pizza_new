@@ -17,6 +17,7 @@
         <th>DISCOUNT CODE</th>
         <th>REMARKS</th>
         <th>LASTMOD</th>
+        <th>DETAILS</th>
       </thead>
       <?php
         $select_sql = <<<SQL
@@ -54,6 +55,12 @@ SQL;
                 <td>$row->discount_cd</td>
                 <td>$row->remarks</td>
                 <td>$row->lastmod</td>
+                <td>
+                  <form action="order_details.php" method="POST">
+                    <input name="order_id" type="hidden" value="$row->order_id">
+                    <button class="btn btn-submit" type="submit">Details</button>
+                  </form>
+                </td>
               </tr>
 ROW;
           }
