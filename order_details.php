@@ -1,6 +1,6 @@
 <?php
   require('requires.php');
-  // $order_id = isset($_REQUEST['order_id']) ? $_REQUEST['order_id'] : null;
+  $order_id = isset($_REQUEST['order_id']) ? $_REQUEST['order_id'] : null;
 ?>
 <!DOCTYPE html>
 <html>
