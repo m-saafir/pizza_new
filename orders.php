@@ -41,6 +41,7 @@
             O.order_type_cd = OT.order_type_cd
           AND
             O.order_status_cd = OS.order_status_cd
+          ORDER BY order_date DESC, lastmod DESC
           LIMIT 10
 SQL;
         if ($result = gen_sql($select_sql, $conn)) {
