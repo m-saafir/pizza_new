@@ -1,36 +1,3 @@
-<?php
-  require('requires.php');
-  $order_type_code = isset($_REQUEST['order_type']) ? $_REQUEST['order_type'] : null;
-  $size_id = isset($_REQUEST['size']) ? $_REQUEST['size'] : null;
-  $cheese_id = isset($_REQUEST['cheese']) ? $_REQUEST['cheese'] : null;
-  $meats = isset($_REQUEST['meats']) ? $_REQUEST['meats'] : null;
-  $veggies = isset($_REQUEST['veggies']) ? $_REQUEST['veggies'] : null;
-  $fruits = isset($_REQUEST['fruits']) ? $_REQUEST['fruits'] : null;
-  $prices = [];
-  $toppings = [];
-  $toppings[] = $cheese_id;
-
-  // if (!($order_type_code && $size_id && $cheese_id)) {
-  //   header('make_pizza.php');
-  //   exit("Vital options were not chosen.");
-  // }
-
-  $res = select('p_order_types', $conn, 'WHERE order_type_cd = '.$order_type_code);
-  $row = $res->fetch_object();
-  $order_type = $row->order_type_cd_desc;
-
-  $res = select('p_pizza_sizes', $conn, 'WHERE size_id = '.$size_id);
-  $row = $res->fetch_object();
-  $size = $row->size_desc;
-  $size_price = $row->price;
-  $prices[] = $size_price;
-
-  $res = select('p_toppings', $conn, 'WHERE topping_id = '.$cheese_id);
-  $row = $res->fetch_object();
-  $cheese = $row->topping_desc;
-  $cheese_price = $row->topping_price;
-  $prices[] = $cheese_price;
-?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -40,6 +7,43 @@
     <link rel="stylesheet" href="style.min.css">
   </head>
   <body>
+    <?php
+      require('requires.php');
+      $order_type_code = isset($_REQUEST['order_type']) ? $_REQUEST['order_type'] : null;
+      $size_id = isset($_REQUEST['size']) ? $_REQUEST['size'] : null;
+      $cheese_id = isset($_REQUEST['cheese']) ? $_REQUEST['cheese'] : null;
+      $meats = isset($_REQUEST['meats']) ? $_REQUEST['meats'] : null;
+      $veggies = isset($_REQUEST['veggies']) ? $_REQUEST['veggies'] : null;
+      $fruits = isset($_REQUEST['fruits']) ? $_REQUEST['fruits'] : null;
+      $prices = [];
+      $toppings = [];
+      $toppings[] = $cheese_id;
+
+      if (!($order_type_code && $size_id && $cheese_id)) {
+        header('make_pizza.php');
+        echo "<p>Vital options were not chosen.</p>"; ?>
+        <a href='make_pizza.php'>
+          <button class='btn btn-warning'>Go Back</button>
+        </a>
+        <?php exit();
+      }
+
+      $res = select('p_order_types', $conn, 'WHERE order_type_cd = '.$order_type_code);
+      $row = $res->fetch_object();
+      $order_type = $row->order_type_cd_desc;
+
+      $res = select('p_pizza_sizes', $conn, 'WHERE size_id = '.$size_id);
+      $row = $res->fetch_object();
+      $size = $row->size_desc;
+      $size_price = $row->price;
+      $prices[] = $size_price;
+
+      $res = select('p_toppings', $conn, 'WHERE topping_id = '.$cheese_id);
+      $row = $res->fetch_object();
+      $cheese = $row->topping_desc;
+      $cheese_price = $row->topping_price;
+      $prices[] = $cheese_price;
+    ?>
     <div class="container container-fluid col-md-9">
       <h1>Your Pizza</h1>
       <ul>
