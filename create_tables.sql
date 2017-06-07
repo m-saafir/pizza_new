@@ -126,14 +126,14 @@ CREATE TABLE IF NOT EXISTS p_discount_codes(
 CREATE TABLE IF NOT EXISTS p_orders(
   order_id int(11) NOT NULL AUTO_INCREMENT,
   order_date date NOT NULL DEFAULT '0000-00-00',
-  -- customer_id int(11) NOT NULL,
+  customer_id int(11) NOT NULL,
   order_type_cd int(11) NOT NULL,
   order_status_cd int(11) NOT NULL,
   discount_cd varchar(32) NULL,
   remarks text NULL,
   lastmod timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
   PRIMARY KEY (order_id),
-  -- FOREIGN KEY (customer_id) REFERENCES p_customer(customer_id),
+  FOREIGN KEY (customer_id) REFERENCES p_customer(customer_id),
   FOREIGN KEY (order_type_cd) REFERENCES p_order_types(order_type_cd),
   FOREIGN KEY (order_status_cd) REFERENCES p_order_status_codes(order_status_cd)
 );
