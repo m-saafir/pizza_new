@@ -10,6 +10,7 @@
     <table class="table table-hover">
       <thead class="thead-default">
         <th>ID</th>
+        <th>CUSTOMER</th>
         <th>DATE</th>
         <th>ORDER TYPE</th>
         <th>ORDER STATUS</th>
@@ -23,6 +24,9 @@
         $select_sql = <<<SQL
           SELECT
             O.order_id,
+            O.customer_id,
+            C.first_name,
+            C.last_name,
             order_date,
             order_type_cd_desc,
             order_status_cd_desc,
@@ -34,13 +38,16 @@
             p_orders O,
             p_order_details OD,
             p_order_types OT,
-            p_order_status_codes OS
+            p_order_status_codes OS,
+            p_customer C
           WHERE
             O.order_id = OD.order_id
           AND
             O.order_type_cd = OT.order_type_cd
           AND
             O.order_status_cd = OS.order_status_cd
+          AND
+            O.customer_id = C.customer_id
           ORDER BY order_date DESC, lastmod DESC
           LIMIT 10
 SQL;
@@ -49,6 +56,7 @@ SQL;
             echo <<<ROW
               <tr>
                 <td>$row->order_id</td>
+                <td>$row->first_name $row->last_name</td>
                 <td>$row->order_date</td>
                 <td>$row->order_type_cd_desc</td>
                 <td>$row->order_status_cd_desc</td>
@@ -59,6 +67,7 @@ SQL;
                 <td>
                   <form action="order_details.php" method="POST">
                     <input name="order_id" type="hidden" value="$row->order_id">
+                    <input name="customer_id" type="hidden" value="$row->customer_id">
                     <button class="btn btn-submit" type="submit">Details</button>
                   </form>
                 </td>
