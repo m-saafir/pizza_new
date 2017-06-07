@@ -47,32 +47,39 @@
         <li><?php echo $size.' pizza $'.$size_price; ?></li>
         <li><?php echo $cheese.' $'.$cheese_price; ?></li>
         <?php
-          foreach ($meats as $meat) {
-            $res = select('p_toppings', $conn, 'WHERE topping_id = '.$meat);
-            while ($row = $res->fetch_object()) {
-              echo '<li>'.$row->topping_desc.' $'.$row->topping_price.'</li>';
-              $prices[] = $row->topping_price;
+          if (!empty($meats)) {
+            foreach ($meats as $meat) {
+              $res = select('p_toppings', $conn, 'WHERE topping_id = '.$meat);
+              while ($row = $res->fetch_object()) {
+                echo '<li>'.$row->topping_desc.' $'.$row->topping_price.'</li>';
+                $prices[] = $row->topping_price;
+              }
+              $toppings[] = $meat;
             }
-            $toppings[] = $meat;
           }
 
-          foreach ($veggies as $veggie) {
-            $res = select('p_toppings', $conn, 'WHERE topping_id = '.$veggie);
-            while ($row = $res->fetch_object()) {
-              echo '<li>'.$row->topping_desc.' $'.$row->topping_price.'</li>';
-              $prices[] = $row->topping_price;
+          if (!empty($veggies)) {
+            foreach ($veggies as $veggie) {
+              $res = select('p_toppings', $conn, 'WHERE topping_id = '.$veggie);
+              while ($row = $res->fetch_object()) {
+                echo '<li>'.$row->topping_desc.' $'.$row->topping_price.'</li>';
+                $prices[] = $row->topping_price;
+              }
+              $toppings[] = $veggie;
             }
-            $toppings[] = $veggie;
           }
 
-          foreach ($fruits as $fruit) {
-            $res = select('p_toppings', $conn, 'WHERE topping_id = '.$fruit);
-            while ($row = $res->fetch_object()) {
-              echo '<li>'.$row->topping_desc.' $'.$row->topping_price.'</li>';
-              $prices[] = $row->topping_price;
+          if (!empty($fruits)) {
+            foreach ($fruits as $fruit) {
+              $res = select('p_toppings', $conn, 'WHERE topping_id = '.$fruit);
+              while ($row = $res->fetch_object()) {
+                echo '<li>'.$row->topping_desc.' $'.$row->topping_price.'</li>';
+                $prices[] = $row->topping_price;
+              }
+              $toppings[] = $fruit;
             }
-            $toppings[] = $fruit;
           }
+
           $total_price = number_format(array_sum($prices), 2);
         ?>
       </ul>
