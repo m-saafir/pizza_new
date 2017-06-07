@@ -1,6 +1,7 @@
 <?php
   require('requires.php');
   $order_id = isset($_REQUEST['order_id']) ? $_REQUEST['order_id'] : null;
+  $customer_id = isset($_REQUEST['customer_id']) ? $_REQUEST['customer_id'] : null;
 ?>
 <!DOCTYPE html>
 <html>
@@ -87,6 +88,45 @@ ROW;
             echo $GLOBALS['error'];
           }
          ?>
+      </table>
+    </div>
+    <div class="col-xs-5">
+      <table class="table table-responsive">
+        <thead class="thead-default">
+          <th>NAME</th>
+          <th>EMAIL</th>
+          <th>PHONE</th>
+          <th>SECONDARY PHONE</th>
+        </thead>
+        <?php
+          $customer_sql = <<<SQL
+            SELECT
+              customer_id,
+              first_name,
+              last_name,
+              email_id,
+              pri_phone,
+              alt_phone
+            FROM
+              p_customer
+            WHERE
+              customer_id = $customer_id
+SQL;
+          if ($result = gen_sql($customer_sql, $conn)) {
+            while ($row = $result->fetch_object()) {
+              echo <<<ROW
+                <tr>
+                  <td>$row->first_name $row->last_name</td>
+                  <td>$row->email_id</td>
+                  <td>$row->pri_phone</td>
+                  <td>$row->alt_phone</td>
+                </tr>
+ROW;
+            }
+          } else {
+            echo $GLOBALS['error'];
+          }
+        ?>
       </table>
     </div>
     <a href="orders.php">
