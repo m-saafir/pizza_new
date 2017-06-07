@@ -34,20 +34,20 @@
     $customer_id = $connection->insert_id;
 
     $orders_sql = "INSERT INTO p_orders (order_date, order_type_cd, order_status_cd, customer_id) VALUES (CURRENT_DATE, $order_type_cd, 1, $customer_id)";
-    if (gen_sql($orders_sql, $connection)) {
+    if (!gen_sql($orders_sql, $connection)) {
       return 0;
     }
     $order_id = $connection->insert_id;
 
     foreach ($topping_ids as $topping) {
       $topping_sql = "INSERT INTO p_pizza_topping (pizza_id, topping_id) VALUES ($pizza_id, $topping)";
-      if (gen_sql($topping_sql, $connection)) {
+      if (!gen_sql($topping_sql, $connection)) {
         return 0;
       }
     }
 
     $order_details_sql = "INSERT INTO p_order_details (order_id, pizza_id, size_id, pizza_topping_id, pizza_price) VALUES ($order_id, $pizza_id, $size_id, $pizza_id, $price)";
-    if (gen_sql($order_details_sql, $connection)) {
+    if (!gen_sql($order_details_sql, $connection)) {
       return 0;
     }
   }
