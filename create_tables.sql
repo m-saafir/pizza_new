@@ -46,8 +46,8 @@ CREATE TABLE IF NOT EXISTS p_customer(
   pri_phone varchar(255) NULL,
   alt_phone varchar(255) NULL,
   lastmod timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
-  PRIMARY KEY (customer_id),
-  UNIQUE KEY (email_id)
+  PRIMARY KEY (customer_id)
+  -- UNIQUE KEY (email_id)
 );
 
 CREATE TABLE IF NOT EXISTS p_address_types(
