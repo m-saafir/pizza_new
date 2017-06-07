@@ -85,13 +85,15 @@
       </ul>
       <p>Total Price: $<?php echo $total_price; ?></p>
 
-      <?php
-        save_pizza($total_price, $size_id, $order_type_code, $toppings, $conn);
-      ?>
-
       <a href="make_pizza.php">
         <button class="btn btn-success">Make Another Order</button>
       </a>
+      <br>
+      <?php
+        if (!save_pizza($total_price, $size_id, $order_type_code, $toppings, $conn)) {
+          echo $GLOBALS['error'];
+        }
+      ?>
     </div>
   </body>
 </html>
