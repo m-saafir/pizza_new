@@ -207,11 +207,11 @@ INSERT INTO p_order_types
   (2, 'Pickup');
 
 INSERT INTO p_order_status_codes
-  (order_status_cd, order_status_cd_desc)
+  (order_status_cd, order_status_cd_desc, active_sw)
   VALUES
-  (1, 'Totaled'),
-  (2, 'Tendered'),
-  (3, 'Completed');
+  (1, 'Totaled', 'Y'),
+  (2, 'Tendered', 'N'),
+  (3, 'Completed', 'Y');
 
 INSERT INTO p_discount_codes
   (discount_cd, discount_cd_desc, amount)
