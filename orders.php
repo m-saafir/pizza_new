@@ -1,4 +1,19 @@
-<?php require('requires.php'); ?>
+<?php
+  require('requires.php');
+  $complete_id = isset($_REQUEST['complete_id']) ? $_REQUEST['complete_id'] : null;
+  $incomplete_id = isset($_REQUEST['undocomplete_id']) ? $_REQUEST['undocomplete_id'] : null;
+  if (!empty($complete_id)) {
+    $update_sql = "UPDATE p_orders SET order_status_cd = 3 WHERE order_id = $complete_id";
+    if (!gen_sql($update_sql, $conn)) {
+      echo $GLOBALS['error'];
+    }
+  } elseif (!empty($incomplete_id)) {
+    $update_sql = "UPDATE p_orders SET order_status_cd = 1 WHERE order_id = $incomplete_id";
+    if (!gen_sql($update_sql, $conn)) {
+      echo $GLOBALS['error'];
+    }
+  }
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -19,6 +34,7 @@
         <th>REMARKS</th>
         <th>LASTMOD</th>
         <th>DETAILS</th>
+        <th>COMPLETE</th>
       </thead>
       <?php
         $select_sql = <<<SQL
@@ -29,6 +45,7 @@
             C.last_name,
             order_date,
             order_type_cd_desc,
+            O.order_status_cd,
             order_status_cd_desc,
             pizza_price,
             discount_cd,
@@ -68,11 +85,30 @@ SQL;
                   <form action="order_details.php" method="POST">
                     <input name="order_id" type="hidden" value="$row->order_id">
                     <input name="customer_id" type="hidden" value="$row->customer_id">
-                    <button class="btn btn-submit" type="submit">Details</button>
+                    <button class="btn btn-info" type="submit">Details</button>
                   </form>
                 </td>
-              </tr>
 ROW;
+            if ($row->order_status_cd != 3) {
+              echo <<<BUTTON
+                <td>
+                  <form action="orders.php" method="POST">
+                    <input name="complete_id" type="hidden" value="$row->order_id">
+                    <button class="btn btn-success" type="submit">Complete Order</button>
+                  </form>
+                </td>
+BUTTON;
+            } else {
+              echo <<<BUTTON
+                <td>
+                  <form action="orders.php" method="POST">
+                    <input name="undocomplete_id" type="hidden" value="$row->order_id">
+                    <button class="btn btn-warning" type="submit">Undo</button>
+                  </form>
+                </td>
+BUTTON;
+            }
+            echo "</tr>";
           }
         } else {
           echo $GLOBALS['error'];
